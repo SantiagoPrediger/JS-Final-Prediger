@@ -37,7 +37,7 @@
           <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
             <a class="nav-link" href="./pages/torneos.html">Torneos</a>
-            <a class="nav-link" href="#">Ingresar</a>
+            <a class="nav-link" href="./pages/iniciar-sesion.html">Ingresar</a>
           </div>
         </div>
       </div>
@@ -55,24 +55,20 @@
         <div class="zoomImg"><img src="./img/organizador.jpg" alt="Cancha de padel"></div>
         <h3 class="centrar">Completa tus datos para registrarte:</h3>
         <div class="form">
-          <form>
+          <form id="formRegristrarEvento">
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Nombre y Apellido:" id="exampleInputEmail1">
+              <input type="text" class="form-control" placeholder="Nombre y Apellido:" id="nombreApellido">
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" placeholder="Nombre del club:" id="exampleInputPassword1">
+              <input type="text" class="form-control" placeholder="Nombre del club:" id="nombreClub">
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Email:" id="exampleInputEmail1"
+              <input type="email" class="form-control" placeholder="Email:" id="emailClub"
                 aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">
                 Nunca compartiremos tu correo electrónico con nadie más.</div>
             </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Suscribite a nuestro newsleter para recibir novedades.</label>
-            </div>
-            <button type="submit" class="btn btn-primary"><a href="./pages/carga-torneo.html">Crear Evento</a></button>
+            <button type="submit" class="btn btn-primary">Crear Evento</button>
           </form>
         </div>
       </div>
@@ -84,23 +80,18 @@
           <div class="zoomImg"><img src="./img/jugador.jpg" alt="Jugador padel"></div>
         <h3 class="centrar">Completa tus datos para ingresar:</h3>
         <div class="form">
-          <form>
+          <form id="formUsuario">
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Nombre Jugador 1:" id="exampleInputEmail1">
+              <input type="text" class="form-control" placeholder="Nombre Jugador 1:" id="jugador1">
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" placeholder="Nombre Jugador 2:" id="exampleInputPassword1">
+              <input type="text" class="form-control" placeholder="Nombre Jugador 2:" id="jugador2">
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Email:" id="exampleInputEmail1"
+              <input type="email" class="form-control" placeholder="Email:" id="emailJugadores"
                 aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">
                 Nunca compartiremos tu correo electrónico con nadie más.</div>
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Suscribite a nuestro newsleter con nuevos
-                eventos.</label>
             </div>
             <button type="submit" class="btn btn-primary" id="button">Buscar torneos</button>
           </form>

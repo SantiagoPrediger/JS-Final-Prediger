@@ -1,0 +1,10 @@
+[
+    {"nombre":"Ajpp","club":"Matchpoint","direccion":"Peron 1234","categoria":4,"precio":1000,"dia":"Lunes","foto":"../img/tor1.jpg","premio":20000},
+    {"nombre":"New Green Padel","club":"La Fabrica","direccion":"Mitre 432","categoria":3,"precio":2000,"dia":"Martes","foto":"../img/tor2.jpg","premio":40000},
+    {"nombre":"Yuka","club":"Flow Sports","direccion":"Belgrano 4328","categoria":2,"precio":3000,"dia":"Jueves","foto":"../img/tor3.jpg","premio":60000},
+    {"nombre":"Chiqui Padel","club":"Efecto Padel","direccion":"Charlone 765","categoria":1,"precio":4000,"dia":"Miercoles","foto":"../img/tor4.jpg","premio":80000},
+    {"nombre":"Ajpp","club":"Actitud Sports","direccion":"Sarmiento 1483","categoria":4,"precio":1000,"dia":"Viernes","foto":"../img/tor5.jpg","premio":20000},
+    {"nombre":"Otp","club":"Plaza Padel","direccion":"Muñoz 382","categoria":3,"precio":2000,"dia":"Sabado","foto":"../img/tor6.jpg","premio":40000},
+    {"nombre":"Yuka","club":"Hit Padel","direccion":"Conesa 82","categoria":2,"precio":3000,"dia":"Lunes","foto":"../img/tor7.jpg","premio":60000},
+    {"nombre":"New Green Padel","club":"Almeria","direccion":"San Lorenzo 9032","categoria":1,"precio":4000,"dia":"Domingo","foto":"../img/tor8.jpg","premio":80000}
+]
