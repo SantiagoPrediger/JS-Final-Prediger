@@ -74,9 +74,160 @@ if(datosClub){
     
 }
 
-// RENDERIZACION DE TORNEOS 
+// RENDERIZAR TORNEOS
 
 const tournaments = document.querySelector('#tournaments')
+
+function renderizarTorneos (listaTorneos) {
+    tournaments.innerHTML = "";
+
+    listaTorneos.forEach(torneo => {
+        const nuevoTorneo = document.createElement('div')
+            nuevoTorneo.className = 'card'
+            nuevoTorneo.innerHTML = `
+            <div class="imgTorn"><img src="${torneo.foto}" class="card-img-top" alt="${torneo.nombre}"></div>
+            <div class="card-body">
+                <h3 class="card-title">${torneo.nombre}</h3>
+                <div class="descripcionEvento">
+                    <div class="iconos">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <i class="fa-solid fa-arrow-up-wide-short"></i>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <div class="textos">
+                        <p class="card-text">  ${torneo.club}</p>
+                        <p class="card-text">  Categoria ${torneo.categoria}</p>
+                        <p class="card-text">  Dia ${torneo.dia}</p>
+                        <p class="card-text">  Precio Inscripcion $${torneo.precio}</p>
+                        <p class="card-text">  Premio $${torneo.premio}</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" id="${torneo.id}" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Inscribirse</a>
+            </div>
+            `
+            tournaments.append(nuevoTorneo);
+    });
+}
+if(tournaments){
+    renderizarTorneos(listaTorneos);
+}
+
+// CARGAR VALORES A LOS SELECTS
+
+let filtroClubes = document.querySelector('#club')
+let filtroCategorias = document.querySelector('#cat')
+
+if(filtroClubes){
+    const clubes = () => {
+        listaTorneos.map(club => {
+            filtroClubes.innerHTML += `<option value="${club.club}">${club.club}</option>`
+        })
+    }
+    clubes()
+}
+
+// FILTRAR RESULTADOS
+
+const filtrar = document.querySelector('#filtrarResultados')
+
+if(filtrar){
+    const filtrarResultados = (e) => {
+        e.preventDefault()
+        const clubes = filtroClubes.value;
+        const categorias = filtroCategorias.value;
+        console.log(clubes);
+        console.log(categorias);
+    
+        const resultados = listaTorneos.filter(torneo => torneo.club + torneo.categoria === clubes + categorias)
+        console.log(resultados)
+        renderizarTorneos(resultados);
+    }
+    
+    filtrar.addEventListener('click', filtrarResultados)
+}
+
+
+// LIMPIAR PARAMETROS DE BUSQUEDA TORNEOS   
+
+const limpiarFiltros = document.querySelector('#limpiar')
+
+if(limpiarFiltros){
+    const renderizar = () => {
+        renderizarProductos(listaTorneos)
+    }
+    limpiarFiltros.addEventListener('click', renderizar) 
+}
+
+
+// RENDERIZAR PRODUCTOS 
+
+const productosContainer = document.querySelector('#productosContainer')
+
+if(productosContainer){
+    listaProductos.forEach(producto => {
+        const nuevoProducto = document.createElement('div')
+            nuevoProducto.className = 'card'
+            nuevoProducto.innerHTML = `
+            <div class="imgTorn"><img src="${producto.foto}" class="card-img-top" alt="${producto.nombre}"></div>
+            <div class="card-body">
+                <h3 class="card-title">${producto.nombre}</h3>
+                <div class="descripcionEvento">
+                    <div class="iconos">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <div class="textos">
+                        <p class="card-text">  Precio: $${producto.precio}</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" id="${producto.id}" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Inscribirse</a>
+            </div>
+            `
+            productosContainer.append(nuevoProducto);
+    })
+}
+
+// VALIDAR FORMULARIO EVENTO 
+
+const crearTorneo = document.querySelector('#crearTorneo')
+crearTorneo.addEventListener('submit', validarFormularioTorneo )
+
+
+
+function validarFormularioTorneo(e){
+    e.preventDefault();
+    const nombreInput = document.querySelector('#nombreInput').value
+    const clubInput = document.querySelector('#clubInput').value
+    const categoriaInput = document.querySelector('#categoriaInput').value
+    const diaInput = document.querySelector('#diaInput').value
+    const precioInput = document.querySelector('#precioInput').value
+    const premioInput = document.querySelector('#premioInput').value
+    const imagenInput = document.querySelector('#imagenInput').value
+
+    
+    localStorage.setItem('jnombreInput', nombreInput)
+    localStorage.setItem('clubInput', clubInput)
+    localStorage.setItem('categoriaInput', categoriaInput)
+    localStorage.setItem('diaInput', diaInput)
+    localStorage.setItem('precioInput', precioInput)
+    localStorage.setItem('premioInput', premioInput)
+    localStorage.setItem('imagenInput', imagenInput)
+
+    window.location = "./torneos.html"
+}
+
+torneoNuevo = [nombreInput,clubInput,categoriaInput,diaInput,precioInput,premioInput,imagenInput]
+
+const torneoNuevo = new Torneo(nombreInput, clubInput, categoriaInput , diaInput, precioInput, imagenInput,9,premioInput);
+listaTorneos.push(torneoNuevo)
+
+
+
+
+// RENDERIZACION DE TORNEOS 
+
+/* const tournaments = document.querySelector('#tournaments')
 
 
 if(tournaments){
@@ -120,8 +271,7 @@ if(tournaments){
 
 // FILTRADO DE TORNEOS
 
-let filtroClubes = document.querySelector('#club')
-let filtroCategorias = document.querySelector('#cat')
+
 
 if(filtroClubes , filtroCategorias) {
     const clubes = () => {
@@ -166,6 +316,15 @@ function renderizarTorneos(torneosBase){
         tournaments.append(nuevoTorneo);
     })
 }
+
+let torneosPrueba = []
+
+fetch('../torneos.json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+
+    })
 
 
 const filtrar = document.querySelector('#filtrarResultados')
@@ -227,4 +386,4 @@ const renderizar = () => {
         })
     })
 }
-limpiarFiltros.addEventListener('click', renderizar) 
+limpiarFiltros.addEventListener('click', renderizar)  */
