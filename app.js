@@ -74,6 +74,52 @@ if(datosClub){
     
 }
 
+// VALIDAR FORMULARIO EVENTO 
+
+ 
+
+
+const crearTorneo = document.querySelector('#crearTorneo')
+if(crearTorneo){
+    crearTorneo.addEventListener('submit', validarFormularioTorneo )
+}
+
+
+function validarFormularioTorneo(e){
+    e.preventDefault();
+    nombreInput = document.querySelector('#nombreInput').value
+    clubInput = document.querySelector('#clubInput').value
+    categoriaInput = document.querySelector('#categoriaInput').value
+    diaInput = document.querySelector('#diaInput').value
+    precioInput = document.querySelector('#precioInput').value
+    premioInput = document.querySelector('#premioInput').value
+    imagenInput = document.querySelector('#imagenInput').value
+
+    
+    localStorage.setItem('jnombreInput', nombreInput)
+    localStorage.setItem('clubInput', clubInput)
+    localStorage.setItem('categoriaInput', categoriaInput)
+    localStorage.setItem('diaInput', diaInput)
+    localStorage.setItem('precioInput', precioInput)
+    localStorage.setItem('premioInput', premioInput)
+    localStorage.setItem('imagenInput', imagenInput)
+
+    window.location = "./torneos.html"
+}
+
+let nombreInput = localStorage.getItem('jnombreInput')
+let clubInput = localStorage.getItem('clubInput')
+let categoriaInput = localStorage.getItem('categoriaInput')
+let diaInput = localStorage.getItem('diaInput')
+let precioInput = localStorage.getItem('precioInput')
+let premioInput = localStorage.getItem('premioInput')
+let imagenInput = localStorage.getItem('imagenInput')
+
+
+const torneoNuevo = new Torneo(nombreInput, clubInput, categoriaInput , diaInput, precioInput, imagenInput ,9,premioInput);
+listaTorneos.push(torneoNuevo)
+console.log(listaTorneos)
+
 // RENDERIZAR TORNEOS
 
 const tournaments = document.querySelector('#tournaments')
@@ -188,39 +234,7 @@ if(productosContainer){
     })
 }
 
-// VALIDAR FORMULARIO EVENTO 
 
-const crearTorneo = document.querySelector('#crearTorneo')
-crearTorneo.addEventListener('submit', validarFormularioTorneo )
-
-
-
-function validarFormularioTorneo(e){
-    e.preventDefault();
-    const nombreInput = document.querySelector('#nombreInput').value
-    const clubInput = document.querySelector('#clubInput').value
-    const categoriaInput = document.querySelector('#categoriaInput').value
-    const diaInput = document.querySelector('#diaInput').value
-    const precioInput = document.querySelector('#precioInput').value
-    const premioInput = document.querySelector('#premioInput').value
-    const imagenInput = document.querySelector('#imagenInput').value
-
-    
-    localStorage.setItem('jnombreInput', nombreInput)
-    localStorage.setItem('clubInput', clubInput)
-    localStorage.setItem('categoriaInput', categoriaInput)
-    localStorage.setItem('diaInput', diaInput)
-    localStorage.setItem('precioInput', precioInput)
-    localStorage.setItem('premioInput', premioInput)
-    localStorage.setItem('imagenInput', imagenInput)
-
-    window.location = "./torneos.html"
-}
-
-torneoNuevo = [nombreInput,clubInput,categoriaInput,diaInput,precioInput,premioInput,imagenInput]
-
-const torneoNuevo = new Torneo(nombreInput, clubInput, categoriaInput , diaInput, precioInput, imagenInput,9,premioInput);
-listaTorneos.push(torneoNuevo)
 
 
 
